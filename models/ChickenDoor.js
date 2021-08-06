@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 ChickenDoorSchema = Schema({
-    doorState: { type: String, default: 'closed'},
-    lastKnownDoorState: { type: String, default: 'closed'},
+    doorState: { type: String, default: 'STATE_DOWN'},
+    lastKnownDoorState: { type: String, default: 'STATE_DOWN'},
     upTime: { type: Number, default: 0},
     pir: { type: Number, default: 0},
 });
