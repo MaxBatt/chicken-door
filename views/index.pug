@@ -6,7 +6,7 @@ block content
     <img src="/images/chicken.png" width="80" style="margin-bottom: 10px"/>
   <div>
   h1= title
-  <button id="doorStateButton" class="#{chickenDoor.doorState === chickenDoor.lastKnownDoorState ? 'btn btn-success' : 'btn btn-danger'}" value="#{chickenDoor.doorState}" #{chickenDoor.doorState !== chickenDoor.lastKnownDoorState ? 'disabled' : '' } for="success" style="width: 385px; margin-top:10px;">#{ chickenDoor.doorState === 'Up' ? 'Close door' : 'Open Door' }</button>
+  <button id="doorStateButton" class="#{chickenDoor.doorState === chickenDoor.lastKnownDoorState ? 'btn btn-success' : 'btn btn-danger'}" value="#{chickenDoor.doorState}" #{chickenDoor.doorState !== chickenDoor.lastKnownDoorState ? 'disabled' : '' } for="success" style="width: 385px; margin-top:10px; margin-bottom: 10px;">#{ chickenDoor.doorState === 'Up' ? 'Close door' : 'Open Door' }</button>
   <div style="width: 385px; text-align: center;">Last known doorState: #{chickenDoor.doorState}<div>
   <div style="width: 385px; text-align: center;">Uptime: #{chickenDoor.upTime}<div>
   <div style="width: 385px; text-align: center;">PIR: #{chickenDoor.pir}<div>
