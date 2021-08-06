@@ -10,8 +10,11 @@ $(function () {
 
         $.post("./api/doorState", { doorState: doorState  })
             .done(function (data) {
-                // alert(JSON.stringify(data));
                 window.location.reload();
             });
-    })
+    });
+
+    setTimeout(function(){
+        window.location.reload();
+     }, 5000);
 });
