@@ -2,11 +2,8 @@ extends layout
 
 block content
   h1= title
-  <form action="./" method="post">
-    <input type="hidden" id="doorState" name="doorState" value="#{chickenDoor.doorState ==='Up' ? 'Down' : 'Up'}">
-    <button class="#{chickenDoor.doorState === chickenDoor.lastKnownDoorState ? 'btn btn-success' : 'btn btn-danger'}" for="success" style="width: 385px;">#{ chickenDoor.doorState }</button>
-  </form>
-  
+  <button id="doorStateButton" class="#{chickenDoor.doorState === chickenDoor.lastKnownDoorState ? 'btn btn-success' : 'btn btn-danger'}" value="#{chickenDoor.doorState}" for="success" style="width: 385px;">#{ chickenDoor.doorState === 'Up' ? 'Close door' : 'Open Door' }</button>
+  <div style="width: 385px; text-align: center;">Last known doorState: #{chickenDoor.doorState}<div>
   
 
 

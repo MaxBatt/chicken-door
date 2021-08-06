@@ -49,7 +49,21 @@ router.get('/api/doorstate', async function(req, res, next) {
       upTime: upTime,
       pir: pir 
     });
-    delete chickenDoor.lastKnownDoorState;
+    res.status(200).json({
+      doorState: chickenDoor.doorState
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
+});
+
+router.post('/api/doorstate', async function(req, res, next) {
+  const doorState = req.body.doorState;
+  try {
+    let chickenDoor = await chickenDoorController.updateDoorState({
+      doorState: doorState,
+    });
     res.status(200).json(chickenDoor);
   } catch (error) {
     console.log(error);

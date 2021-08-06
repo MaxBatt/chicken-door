@@ -48,6 +48,14 @@ module.exports = function () {
                     dbChickenDoor.doorState = chickenDoor.doorState
                 }
                 if(chickenDoor.lastKnownDoorState){
+                    if(chickenDoor.lastKnownDoorState){
+                        if(chickenDoor.lastKnownDoorState === 'STATE_DOWN'){
+                            chickenDoor.lastKnownDoorState = 'Down'
+                        }
+                        else if(chickenDoor.lastKnownDoorState === 'STATE_UP'){
+                            chickenDoor.lastKnownDoorState = 'Up'
+                        }
+                    }
                     dbChickenDoor.lastKnownDoorState = chickenDoor.lastKnownDoorState
                 }
                 if(chickenDoor.upTime){
@@ -56,6 +64,27 @@ module.exports = function () {
                 if(chickenDoor.pir){
                     dbChickenDoor.pir = chickenDoor.pir
                 }
+                dbChickenDoor.save(function (err, data) {
+                    if (!err) {
+                        resolve(data);
+                    } else {
+                        console.log(err);
+                        reject(err);
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+                reject.error;
+            }
+        });
+    }
+
+    this.updateDoorState = function (params) {
+        return new Promise(async function (resolve, reject) {
+            try {
+                let dbChickenDoor = await _this.getChickenDoor();
+                dbChickenDoor.doorState = params.doorState
+
                 dbChickenDoor.save(function (err, data) {
                     if (!err) {
                         resolve(data);
