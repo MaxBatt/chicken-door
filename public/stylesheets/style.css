@@ -1,0 +1,11 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  grid-gap: 2rem;
+  padding: 1rem;
+}
+
+a {
+  color: #00B7FF;
+}
