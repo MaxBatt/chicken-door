@@ -20,15 +20,22 @@ module.exports = function () {
            });
         });
     }
-    this.getChickenDoor = function () {
-        return new Promise(async function (resolve, reject) {
+    this.getChickenDoor = async function () {
+        return new Promise( function (resolve, reject) {
             const query = ChickenDoor.find({}).limit(1);
-            query.exec(function(err, chickenDoor) {
+            query.exec(async function(err, chickenDoors) {
                 if (err) {
                     console.log(err);
                     reject(err);
                 }
-                resolve(chickenDoor[0]);
+                // if no chicken door exists yet (first app start)
+                if(chickenDoors.length == 0){
+                    let chickenDoor = await _this.createChickenDoor();
+                    resolve(chickenDoor);
+                }
+                else{
+                    resolve(chickenDoors[0]);
+                }
             });
         });
     }
